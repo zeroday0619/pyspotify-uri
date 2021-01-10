@@ -26,7 +26,7 @@ def parse(_input: str):
         parsedQs = dict(parse_qs(parsed.query))
         return parse(parsedQs.get("uri")[0])
 
-    if parsed.scheme == "spotify:":
+    if parsed.scheme == "spotify":
         parts = uri.split(':')
         return parseParts(uri=uri, parts=parts)
 
@@ -60,6 +60,7 @@ def parseParts(uri: str, parts: List[str]):
             decode(parts[4]),
             int(parts[5])
         )
+
     if length == 3 and parts[1] == "playlist":
         return Playlist(decode(parts[2]))
     if length == 3 and parts[1] == "user":

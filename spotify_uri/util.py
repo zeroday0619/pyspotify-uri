@@ -11,7 +11,8 @@ def decode(string: str) -> str:
     :return: decode url
     :rtype: str
     """
-    return re.sub(r"/\+/g", ' ', unquote(string))
+    a = re.sub(r"/\+/g", ' ', unquote(string))
+    return a
 
 
 def encode(string: str) -> str:
@@ -22,4 +23,5 @@ def encode(string: str) -> str:
     :return: encoded url
     :rtype: str
     """
-    return quote(re.sub(r"/ /g", "+", string))
+    d = re.sub(r"/ /g", "+", str(string))
+    return quote(str(d))
