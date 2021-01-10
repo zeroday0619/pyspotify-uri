@@ -2,7 +2,7 @@ from spotify_uri.util import encode
 
 
 class Playlist:
-    def __init__(self, _id: str, user: str):
+    def __init__(self, _id: str = None, user: str = None):
         self.id = _id
         self.user = user
 

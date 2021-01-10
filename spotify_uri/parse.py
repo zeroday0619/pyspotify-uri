@@ -11,8 +11,15 @@ from spotify_uri.user import User
 from spotify_uri.util import decode
 
 
-def parse(input: str):
-    uri = input
+def parse(_input: str):
+    """Parses a "Spotify URI".
+
+    :param _input:
+    :type _input: str
+    :return:
+    :rtype:
+    """
+    uri = _input
     parsed = urlparse(url=uri)
 
     if parsed.hostname == "embed.spotify.com":
@@ -31,6 +38,42 @@ def parse(input: str):
 
 
 def parseParts(uri: str, parts: List[str]):
+    """
+
+    :param uri:
+    :type uri:
+    :param parts:
+    :type parts: List[str]
+    :return:
+    :rtype:
+    """
     length = len(parts)
     if parts[1] == "embed":
         parts = parts[:1]
+    if parts[1] == "search":
+        return Search(query=decode(":".join(parts[:2])))
+
+    if length >= 3 and parts[1] == "local":
+        return Local(
+            decode(parts[2]),
+            decode(parts[3]),
+            decode(parts[4]),
+            int(parts[5])
+        )
+    if length == 3 and parts[1] == "playlist":
+        return Playlist(decode(parts[2]))
+    if length == 3 and parts[1] == "user":
+        return User(decode(parts[2]))
+    if length >= 5:
+        return Playlist(decode(parts[4]), decode(parts[2]))
+    if length >= 4 and parts[3] == "starred":
+        return Playlist("starred", decode(parts[2]))
+    if parts[1] == "artist":
+        return Artist(parts[2])
+    if parts[1] == "album":
+        return Album(parts[2])
+    if parts[1] == "track":
+        return Track(parts[2])
+    if parts[1] == "episode":
+        return Episode(parts[2])
+    raise TypeError(f"Could not determine type for: {uri}")
