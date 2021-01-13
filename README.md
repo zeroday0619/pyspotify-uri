@@ -56,3 +56,6 @@ print(uri)
 # https://embed.spotify.com/?uri=spotify:track:3GU4cxkfdc3lIp9pFEMMmw
 
 ```
+
+## License
+[MIT](LICENSE)
