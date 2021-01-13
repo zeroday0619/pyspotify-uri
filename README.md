@@ -10,7 +10,7 @@ You can also convert them back into Spotify URIs or HTTP URLs.
 Installation
 ------------
 ```bash
-pip install git+https://github.com/zeroday0619/pyspotify-uri.git
+pip install spotify-uri
 ```
 
 Example
