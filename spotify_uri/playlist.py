@@ -1,10 +1,12 @@
+from spotify_uri.spotify import SpotifyUri
 from spotify_uri.util import encode
 
 
-class Playlist:
-    def __init__(self, _id: str = None, user: str = None):
+class Playlist(SpotifyUri):
+    def __init__(self, uri: str, _id: str = None, user: str = None):
         self.id = _id
         self.user = user
+        super(Playlist, self).__init__(uri)
 
     def toURI(self) -> str:
         if self.user:

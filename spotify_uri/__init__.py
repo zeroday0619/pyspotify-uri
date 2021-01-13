@@ -9,7 +9,7 @@ from spotify_uri.artist import Artist as _Artist
 from spotify_uri.album import Album as _Album
 from spotify_uri.track import Track as _Track
 from spotify_uri.user import User as _User
-from spotify_uri.spotify import SpotifyUri as _SpotifyUri
+from spotify_uri.spotify import SpotifyUri
 
 
 def parseSpotifyUri(uri: str):
@@ -17,20 +17,20 @@ def parseSpotifyUri(uri: str):
 
 
 def formatURI(_input: str) -> str:
-    a = parse(_input).toURI()
-    return a
+    _uri = parse(_input)
+    return _uri.toURI()
 
 
-def formatEmbedURL(_input: str):
-    b = parse(_input)
-    return _SpotifyUri.toEmbedURL(b)
+def formatEmbedURL(_input: str) -> str:
+    _uri = parse(_input)
+    return _uri.toEmbedURL()
 
 
 def formatOpenURL(_input: str):
-    c = parse(_input)
-    return _SpotifyUri.toOpenURL(c)
+    _uri = parse(_input)
+    return _uri.toOpenURL()
 
 
 def formatPlayURL(_input: str):
-    d = parse(_input)
-    return _SpotifyUri.toPlayURL(d)
+    _uri = parse(_input)
+    return _uri.toPlayURL()

@@ -20,7 +20,7 @@ def parse(_input: str):
     :rtype:
     """
     uri = _input
-    parsed = urlparse(url=uri)
+    parsed = urlparse(uri)
 
     if parsed.hostname == "embed.spotify.com":
         parsedQs = dict(parse_qs(parsed.query))
@@ -28,13 +28,13 @@ def parse(_input: str):
 
     if parsed.scheme == "spotify":
         parts = uri.split(':')
-        return parseParts(uri=uri, parts=parts)
+        return parseParts(uri, parts)
 
     if parsed.path is None:
         raise TypeError("No pathname")
 
     parts = parsed.path.split('/')
-    return parseParts(uri=uri, parts=parts)
+    return parseParts(uri, parts)
 
 
 def parseParts(uri: str, parts: List[str]):
@@ -49,12 +49,16 @@ def parseParts(uri: str, parts: List[str]):
     """
     length = len(parts)
     if parts[1] == "embed":
-        parts = parts[:1]
+        parts = parts[1:]
     if parts[1] == "search":
-        return Search(query=decode(":".join(parts[:2])))
+        return Search(
+            uri,
+            decode(":".join(parts[:2]))
+        )
 
     if length >= 3 and parts[1] == "local":
         return Local(
+            uri,
             decode(parts[2]),
             decode(parts[3]),
             decode(parts[4]),
@@ -62,19 +66,20 @@ def parseParts(uri: str, parts: List[str]):
         )
 
     if length == 3 and parts[1] == "playlist":
-        return Playlist(decode(parts[2]))
+        return Playlist(uri, decode(parts[2]))
     if length == 3 and parts[1] == "user":
-        return User(decode(parts[2]))
+        return User(uri, decode(parts[2]))
     if length >= 5:
-        return Playlist(decode(parts[4]), decode(parts[2]))
+        return Playlist(uri, decode(parts[4]), decode(parts[2]))
     if length >= 4 and parts[3] == "starred":
-        return Playlist("starred", decode(parts[2]))
+        return Playlist(uri, "starred", decode(parts[2]))
     if parts[1] == "artist":
-        return Artist(parts[2])
+        return Artist(uri, parts[2])
     if parts[1] == "album":
-        return Album(parts[2])
+        return Album(uri, parts[2])
     if parts[1] == "track":
-        return Track(parts[2])
+        return Track(uri, parts[2])
     if parts[1] == "episode":
-        return Episode(parts[2])
+        return Episode(uri, parts[2])
+
     raise TypeError(f"Could not determine type for: {uri}")
