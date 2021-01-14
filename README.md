@@ -2,7 +2,7 @@ pyspotify-uri
 =============
 This is a project that ported [@TooTallNate/spotify-uri](https://github.com/TooTallNate/spotify-uri) to Python.
 
-### Parse the various Spotify URI formats into Objects and back
+### Parse and format the various Spotify URI formats
 Spotify URIs get passed around in a variety of flavors.     
 You can also convert them back into Spotify URIs or HTTP URLs.
 
