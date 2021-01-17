@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='spotify_uri',
-    version='1.0.0',
+    version='1.0.1',
     description='This is a project that ported @TooTallNate/spotify-uri to Python.',
     author='zeroday0619',
     author_email='zeroday0619@kakao.com',

@@ -9,6 +9,7 @@ from spotify_uri.track import Track
 from spotify_uri.episode import Episode
 from spotify_uri.user import User
 from spotify_uri.util import decode
+from spotify_uri.spotify import SpotifyUri
 
 
 def parse(_input: str):
@@ -19,11 +20,14 @@ def parse(_input: str):
     :return:
     :rtype:
     """
-    uri = _input
+    uri = _input.uri if SpotifyUri.is_(_input) else _input
     parsed = urlparse(uri)
 
     if parsed.hostname == "embed.spotify.com":
         parsedQs = dict(parse_qs(parsed.query))
+
+        if bool(type(parsedQs.get("uri")[0]) != str):
+            raise TypeError
         return parse(parsedQs.get("uri")[0])
 
     if parsed.scheme == "spotify":
