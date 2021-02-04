@@ -1,5 +1,7 @@
 pyspotify-uri
 =============
+[![Upload PyPI](https://github.com/zeroday0619/pyspotify-uri/workflows/Upload%20Python%20Package/badge.svg)](https://pypi.org/project/spotify-uri/)
+
 This is a project that ported [@TooTallNate/spotify-uri](https://github.com/TooTallNate/spotify-uri) to Python.
 
 ### Parse and format the various Spotify URI formats
