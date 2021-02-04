@@ -1,6 +1,6 @@
 pyspotify-uri
 =============
-![LICENSE](https://img.shields.io/github/license/zeroday0619/pyspotify-uri)![pyversions](https://img.shields.io/pypi/pyversions/spotify-uri)[![Upload PyPI](https://github.com/zeroday0619/pyspotify-uri/workflows/Upload%20Python%20Package/badge.svg)](https://pypi.org/project/spotify-uri/)
+[![LICENSE](https://img.shields.io/github/license/zeroday0619/pyspotify-uri)](https://github.com/zeroday0619/pyspotify-uri/blob/main/LICENSE)![pyversions](https://img.shields.io/pypi/pyversions/spotify-uri)[![Upload PyPI](https://github.com/zeroday0619/pyspotify-uri/workflows/Upload%20Python%20Package/badge.svg)](https://pypi.org/project/spotify-uri/)
 
 
 This is a project that ported [@TooTallNate/spotify-uri](https://github.com/TooTallNate/spotify-uri) to Python.
