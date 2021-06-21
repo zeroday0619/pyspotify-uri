@@ -1,5 +1,7 @@
 from typing import List
 from urllib.parse import urlparse, parse_qs
+from spotify_uri.spotify import SpotifyUri
+from spotify_uri.util import decode
 from spotify_uri.local import Local
 from spotify_uri.search import Search
 from spotify_uri.playlist import Playlist
@@ -7,9 +9,9 @@ from spotify_uri.artist import Artist
 from spotify_uri.album import Album
 from spotify_uri.track import Track
 from spotify_uri.episode import Episode
+from spotify_uri.show import Show
 from spotify_uri.user import User
-from spotify_uri.util import decode
-from spotify_uri.spotify import SpotifyUri
+
 
 
 def parse(_input: str):
@@ -85,5 +87,7 @@ def parseParts(uri: str, parts: List[str]):
         return Track(uri, parts[2])
     if parts[1] == "episode":
         return Episode(uri, parts[2])
+    if parts[1] == "show":
+        return Show(uri, parts[2])
 
     raise TypeError(f"Could not determine type for: {uri}")
