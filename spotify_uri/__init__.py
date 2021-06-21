@@ -1,5 +1,5 @@
 
-__version__ = "1.0.1"
+__version__ = "1.0.2"
 
 from spotify_uri.parse import parse as _parse
 from spotify_uri.search import Search as _Search
