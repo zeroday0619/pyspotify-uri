@@ -61,8 +61,7 @@ print(uri)
 ```
 
 ## License
-
-<img align="right" src="https://opensource.org/trademarks/opensource/OSI-Approved-License-100x137.png">
+<img align="right" src="https://i0.wp.com/opensource.org/wp-content/uploads/2009/06/OSIApproved_100X125.png?resize=100%2C125">
 
 Distributed under the [MIT License](LICENSE):
 
